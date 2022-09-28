@@ -39,7 +39,7 @@ def horizontal_row_product(row):
         third_number += 1
         fourth_number += 1
         product_array.append(product_of_four(multiplicants))
-        print(product_array)
+        #print(product_array)
     return max(product_array)
 
 
@@ -47,11 +47,11 @@ def horizontal_matrix(matrix):
     product_array = []
     for row in matrix:
         product_array.append(horizontal_row_product(row))
-    print(f'product_array is: {product_array}')
+    #print(f'product_array is: {product_array}')
     return max(product_array)
 
 
-print(f'\nanswer is {horizontal_matrix(matrix)}')
+#print(f'\nanswer is {horizontal_matrix(matrix)}')
 
 # Vertical
 # Purpose: Make a function that will calculate the vertical products of four numbers
@@ -79,9 +79,17 @@ starting_row_index = 0
 #   arr.push(row[starting_row_index][y])
 #   starting_row_index += 1
 
-for row in matrix:
-    print(row)
-
+for col_index in range(len(matrix[0])):
+    row_index = 0
+    # while row_index +4 <len(matrix):
+    #     print(f"Number at row {row_index}"
+    #           f" and column {col_index}: {matrix[row_index][col_index]}")
+    #     row_index+=1        
+    
+    for row_index in range(len(matrix)):
+        
+        print(f"Number at row {row_index}"
+              f" and column {col_index}: {matrix[row_index][col_index]}")
 
 def vertical_column_product(matrix):
     row = 0
