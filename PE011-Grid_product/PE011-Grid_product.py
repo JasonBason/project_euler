@@ -78,18 +78,33 @@ starting_row_index = 0
 # while starting_row_index < four_adajcent_nums:
 #   arr.push(row[starting_row_index][y])
 #   starting_row_index += 1
+NUMBERS_TO_MULTIPLY = 3 # (actually 4)
 
 for col_index in range(len(matrix[0])):
-    row_index = 0
+    # row_index = 0
     # while row_index +4 <len(matrix):
     #     print(f"Number at row {row_index}"
     #           f" and column {col_index}: {matrix[row_index][col_index]}")
     #     row_index+=1        
-    
-    for row_index in range(len(matrix)):
+    starting_row_index = 0
+    ending_row_index = starting_row_index + NUMBERS_TO_MULTIPLY
+    print(f"\ncol_index: {col_index}")
+    while ending_row_index < len(matrix):
+        print(f"starting_row_index is {starting_row_index}")
+        print(f"ending_row_index is {ending_row_index}")
+        print(f"starting number is {matrix[col_index][starting_row_index]}")
         
-        print(f"Number at row {row_index}"
-              f" and column {col_index}: {matrix[row_index][col_index]}")
+        starting_row_index +=1
+        ending_row_index +=1
+        
+        # print(f"Number at row {row_index}"
+        #       f" and column {col_index}: {matrix[row_index][col_index]}")        
+    
+    
+    # for row_index in range(len(matrix)):
+        
+    #     print(f"Number at row {row_index}"
+    #           f" and column {col_index}: {matrix[row_index][col_index]}")
 
 def vertical_column_product(matrix):
     row = 0
