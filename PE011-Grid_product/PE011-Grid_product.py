@@ -78,40 +78,31 @@ starting_row_index = 0
 # while starting_row_index < four_adajcent_nums:
 #   arr.push(row[starting_row_index][y])
 #   starting_row_index += 1
-NUMBERS_TO_MULTIPLY = 3 # (actually 4)
-
-for col_index in range(len(matrix[0])):
-    # row_index = 0
-    # while row_index +4 <len(matrix):
-    #     print(f"Number at row {row_index}"
-    #           f" and column {col_index}: {matrix[row_index][col_index]}")
-    #     row_index+=1        
-    starting_row_index = 0
-    ending_row_index = starting_row_index + NUMBERS_TO_MULTIPLY
-    print(f"\ncol_index: {col_index}")
-    while ending_row_index < len(matrix):
-        print(f"starting_row_index is {starting_row_index}")
-        print(f"ending_row_index is {ending_row_index}")
-        print(f"starting number is {matrix[col_index][starting_row_index]}")
-        
-        starting_row_index +=1
-        ending_row_index +=1
-        
-        # print(f"Number at row {row_index}"
-        #       f" and column {col_index}: {matrix[row_index][col_index]}")        
-    
-    
-    # for row_index in range(len(matrix)):
-        
-    #     print(f"Number at row {row_index}"
-    #           f" and column {col_index}: {matrix[row_index][col_index]}")
+NUMBERS_TO_MULTIPLY = 4
 
 def vertical_column_product(matrix):
-    row = 0
-    while row < len(matrix):
-      print(matrix[row])
-      row += 1
-      
+    product_array = []  
+    for col_index in range(len(matrix[0])):       
+        starting_row_index = 0
+        ending_row_index = starting_row_index + NUMBERS_TO_MULTIPLY
+        print(f"\ncol_index: {col_index}")
+        while ending_row_index < len(matrix)+1:
+            multiplicants = []
+            # print(f"starting number is {matrix[starting_row_index][col_index]}")
+            # print(f"The range is: {starting_row_index}, {ending_row_index}")
+            for number in range(starting_row_index,ending_row_index):
+                multiplicants.append(matrix[number][col_index])
+            print(multiplicants)
+            product_array.append(product_of_four(multiplicants))
+            starting_row_index +=1
+            ending_row_index +=1
+    print(product_array)
+            
+#TODO: should I make the function modular like the horizontal function and then
+# make a second function to got column by column?
+
+
+vertical_column_product(matrix)
 
 
 #vertical_column_product(matrix)
