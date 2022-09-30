@@ -4,7 +4,7 @@
 # 4) Calculate diagonals for 4 chunks
 # 5) Calculate all possible products
 
-f = open("pe011-test.txt")
+f = open("pe011.txt")
 contents = f.read()
 f.close()
 
@@ -23,6 +23,9 @@ def product_of_four(list_of_four):
 
 
 def horizontal_row_product(row):
+    """Identifies the 4 multiplicants and determines their product for each row"""
+    
+    
     product_array = []
     first_number = 0
     second_number = 1
@@ -51,12 +54,13 @@ def horizontal_matrix(matrix):
     return max(product_array)
 
 
-#print(f'\nanswer is {horizontal_matrix(matrix)}')
+print('horizontal is:') 
+print(horizontal_matrix(matrix))
 
 # Vertical
 # Purpose: Make a function that will calculate the vertical products of four numbers
 
-print("Vertical")
+# print("Vertical")
 # matrix[x][y]
 four_adajcent_nums = 4
 starting_row_index = 0
@@ -85,24 +89,70 @@ def vertical_column_product(matrix):
     for col_index in range(len(matrix[0])):       
         starting_row_index = 0
         ending_row_index = starting_row_index + NUMBERS_TO_MULTIPLY
-        print(f"\ncol_index: {col_index}")
+        #print(f"\ncol_index: {col_index}")
         while ending_row_index < len(matrix)+1:
             multiplicants = []
             # print(f"starting number is {matrix[starting_row_index][col_index]}")
             # print(f"The range is: {starting_row_index}, {ending_row_index}")
             for number in range(starting_row_index,ending_row_index):
                 multiplicants.append(matrix[number][col_index])
-            print(multiplicants)
+            #print(multiplicants)
             product_array.append(product_of_four(multiplicants))
             starting_row_index +=1
             ending_row_index +=1
-    print(product_array)
+    return(max(product_array))
+
+print("vertical is:")
+print(vertical_column_product(matrix))
             
 #TODO: should I make the function modular like the horizontal function and then
 # make a second function to got column by column?
 
 
-vertical_column_product(matrix)
+# Strategy: define a starting number and then choose the next three numbers off of that
+# If any number is extends out of range, then move on to the next number
+def upleft_to_bottomright_product(matrix):
+    product_array = []
+    for row_index in range(len(matrix[0])):
+        for col_index in range(len(matrix)):
+            multiplicants = []
+            for number in range(NUMBERS_TO_MULTIPLY):   
+                   row = row_index + number
+                   col = col_index + number
+                   # print(f"row is {row}")
+                   # print(f"col is {col}")
+                   if row < len(matrix) and col < len(matrix[0]):
+                       multiplicants.append(matrix[row][col])
+                   else:
+                       pass
+            if len(multiplicants) == NUMBERS_TO_MULTIPLY:
+                product_array.append(product_of_four(multiplicants))
+                # print(multiplicants)
+    return(max(product_array))
+
+print("upleft is:")    
+print(upleft_to_bottomright_product(matrix))
 
 
-#vertical_column_product(matrix)
+
+def bottomleft_to_upright_product(matrix):
+    product_array = []
+    for row_index in range(len(matrix[0])):
+        for col_index in range(len(matrix)):
+            multiplicants = []
+            for number in range(NUMBERS_TO_MULTIPLY):   
+                   row = row_index - number
+                   col = col_index + number
+                   #print(f"row is {row}")
+                   # print(f"col is {col}")
+                   if row >= 0 and col < len(matrix[0]):
+                       multiplicants.append(matrix[row][col])
+                   else:
+                       pass
+            if len(multiplicants) == NUMBERS_TO_MULTIPLY:
+                product_array.append(product_of_four(multiplicants))
+                #print(multiplicants)
+    return(max(product_array))
+
+print("bottomleft is:")
+print(bottomleft_to_upright_product(matrix))
