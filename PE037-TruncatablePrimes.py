@@ -69,3 +69,4 @@ for i,v in primes_dict.items():
 
 print(sum(truncatable_primes))
 #748317
+#test
