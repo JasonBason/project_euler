@@ -1,4 +1,4 @@
-upper_limit = 2000000
+upper_limit = 1000000
 counter = 0
 answer = 0
 
@@ -17,27 +17,39 @@ def find_prime_number(upper_limit):
 
   return is_prime
 
-prime_boolean_array = (find_prime_number(100))
+prime_boolean_array = (find_prime_number(upper_limit))
 
-prime_numbers = []
+prime_dic = dict(zip(list(range(0,upper_limit)),prime_boolean_array))
+prime_dic[0] = False
+prime_dic[1] = False
+#print(prime_dic)
 
-for i in range(len(prime_boolean_array)):
-    if prime_boolean_array[i] ==True:    
-        prime_numbers.append(i)
 
-# print(prime_numbers)
 
 def number_rotator(number):
-    number_array = ([*str(number)])
-    print(number_array)
-    
+    rotatable = False
+    for rotation in range(len(str(number))):
+        number = str(number)[1:] + str(number)[0]
+        print(number)
+        if prime_dic[int(number)] == True:
+            rotatable = True
+        else:
+            rotatable = False
+            break
+    return rotatable
+(number_rotator(101))
+(number_rotator(13))
 
 
-number_rotator(123)
+rotatable_prime_list = []
 
 def circular_prime_number(prime_numbers_array):
-    for prime in prime_numbers_array:
-        print('test')
-        
+    for number, prime_status in prime_numbers_array.items():
+        if prime_status == True:
+            if number_rotator(number) == True:
+                rotatable_prime_list.append(number)
 
-        
+circular_prime_number(prime_dic)        
+
+print(rotatable_prime_list)   
+print(len(rotatable_prime_list))  
