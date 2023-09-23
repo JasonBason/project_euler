@@ -9,23 +9,8 @@ triangle = []
 for row in rows:
     triangle.append(list(map(int, row.split(" "))))
 
-#print(triangle)
 
-test = [8, 5, 9, 3]
-# [8,9,9]
 
-# 3
-# 7 4
-# 2 4 6
-# 8 5 9 3
-
-# 2 4 6
-# 8 9 9
-# ------
-# 10 13 15
-
-# 13 15
-# 7  4
 
 row_counter = len(triangle) - 1
 firstRow = 0
